@@ -1,0 +1,354 @@
+{% load static %}
+<!DOCTYPE html>
+<html amp> 
+	<head>
+		<meta charset="utf-8">
+    	<script async src="https://cdn.ampproject.org/v0.js"></script>
+    	<link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/">
+    	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    	<script type="application/ld+json">
+      	{
+        	"@context": "http://schema.org",
+        	"@type": "NewsArticle",
+        	"headline": "Open-source framework for publishing content",
+        	"datePublished": "2015-10-07T12:02:41Z",
+        	"image": [
+          	"logo.jpg"
+        	]
+      	}
+    	</script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+		<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACdiSXdNwpDfTsCO/0+/jP9PvYr/KF5ETwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATcaWUE3Flf9Ssnr/WJpW/1ibWP9YnVv/Vp5d/1KxeP9QuoX/ULmDUAAAAAAAAAAAAAAAAAAAAAAAAAAAS8iYh03Glv9YllH/WJhU/1iaVv99pn7/eaN8/1aeXf9WoGD/VqNj/1C5g/9Qt4HPAAAAAAAAAAAAAAAAS8maUEvImP9ZlU7/WJZR/4+VmP+1tbb/tbW2/yEyPP8DFyT/NkZQ/1aiYv9Wo2T/VaZp/1SuclAAAAAAAAAAAEvJmv9ZlEz/WZVO/7W1tf/Gxsj/y8vN/8jIyf/Gxsj/gYeL/w0hLf/Hx8n/XaBq/1Woav9Tsnb/AAAAACZlTndSs3z/WZRM/7+/wf+UmJv/CyAs/0JQWf/i4uL/29vc/8/P0f+9vb//r6+w/8PDxf9UqWv/U690/ylaPk9Ly5zfWpJK/1mUTP/Nzc7/CiAs/xgpM/8fLTj/9/f3/+/v7//f3+D/yMjJ/7m5u//AwML/Vaps/1OvdP9TsXL/S8uc/1qSSv83Zz3/xcXH/xQmMf8jMTr/lJib/9jY2v/+/v7/6enp/zxDSf+/v8D/s7O0/zp2VP9Vp2n/UcSB/0vLnP9akkr/O2xA/9vb2//x8fH/+fn5/////////////////15hZP9QVVn/PENJ/7Gxs/93ro3/VKlr/1G3fv9Ly5z/WpJK/1mUTP/Y2Nn/7u7u//f3+P////////////////9zdXX/XWFk/0tSV/+xsbP/iqtu/1+wdv9Rw4L/JmVOT1KzfP9ZlEz/xMTG/+Tk5P/Fxsj//v7+//7+/v/09PT/2NjY/52fof+8vL7/tbW2/6rKqv+NvZr/KVo+dwAAAABLyZr/WZRM/1mVTv/CwsT/KTU+/zhARv+4urv/4eHi/9TU1f/ExMX/pqao/5q6kf9meDD/bKhv/wAAAAAAAAAAS8maUEvImP9ZlU7/WJZR/4eKjv8tN0D/PEVL/8zMzf/CwsT/pKSm/4Ssf/+kuKD/g698/2iyb1AAAAAAAAAAAAAAAABLyJjPTcaW/1iWUf9YmFT/WJpW/3ejeP9xnnX/Vp5d/1agYP9WomL/ULmD/1C5gc8AAAAAAAAAAAAAAAAAAAAAAAAAAE3GllBNxZX/UrJ6/1iaVv9Ym1j/WJ1b/1aeXf9SsXj/ULqF/1C5g1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACdiSXdNwpD/TsCO/0+/jP9PvYrfKF5ETwAAAAAAAAAAAAAAAAAAAAAAAAAA/D8AAPAPAADAAwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAMADAADwDwAA/D8AAA==" rel="icon" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/content.css' %}">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+		<style>
+		body {
+  			font-family: Arial, Helvetica, sans-serif;
+
+			  margin: 0;
+			  padding-left: 15px;
+			  padding-right: 15px;
+		}
+
+		.mobile-container {
+  			margin: auto;
+  			background-color: #ecf0f1;
+  			height: 500px;
+  			color: white;
+  			border-radius: 10px;
+			font-size: 8px;
+		}
+
+		.topnav {
+  			overflow: hidden;
+  			background-color: #005580;
+			position:relative;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			text-transform: uppercase;
+
+		}
+
+		@media only screen and (max-width: 800px) {
+		.topnav #myLinks {
+			display: none;
+        }
+    	} 
+
+		.topnav a {
+  			color: white;
+  			padding: 14px 16px;
+  			text-decoration: none;
+  			font-size: 17px;
+			display: block;
+		}
+
+		.topnav a.icon {
+  			background: #012b41;
+  			display: block;
+  			position: absolute;
+  			right: 0;
+  			top: 0;
+		}
+
+		.topnav a:hover {
+  			background-color: #012b41;
+  			color: white;
+		}
+
+		</style>
+	</head>
+	<body> 
+		<head><title>Youth Football Platform</title></head>
+		<div class="topnav">
+			<a class="topnav a" href="{% url 'homepage' %}" style="width: 100px;"><img src="{% static 'icons/home.png' %}" style="width:16px;height:16px;"> Home</a>
+			<div id="myLinks">
+			  <a href="{% url 'statoptions' %}" style="width: 125px;"><img src="{% static 'icons/statistics.png' %}" style="width:16px;height:16px;"> Estatísticas</a>
+			  <a href="{% url 'classoptions' %}" style="width: 150px;"><img src="{% static 'icons/classification.png' %}" style="width:16px;height:16px;"> Classificação</a>
+			  <a href="{% url 'matches' %}"><img src="{% static 'icons/matches.png' %}" style="width:16px;height:16px;"> Jornadas</a>
+			  <a href="{% url 'options' %}"><img src="{% static 'icons/players.png' %}" style="width:16px;height:16px;"> Jogadores</a>
+			  <a href="{% url 'contacts' %}" style="width: 125px;"><img src="{% static 'icons/contacts.png' %}" style="width:16px;height:16px;"> Contactos</a>
+			</div>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			  <i class="fa fa-bars"></i>
+			</a>
+		  </div>
+
+		  <script>
+			function myFunction() {
+			  var x = document.getElementById("myLinks");
+			  if (x.style.display === "block") {
+				x.style.display = "none";
+			  } else {
+				x.style.display = "block";
+			  }
+			}
+			</script>
+			
+		<br>
+		<div class="page-header">
+			<img style="max-width: 300px;height: auto;" src="{% static 'logo.png' %}" alt="logo">
+		</div>
+		<div style="background-color:#012b41;padding: 5px;text-align: right;height: 10px;"></div>
+		<br>
+		{% if request.path == '/' %}
+		<table style="border-collapse: collapse;width: 100%;">
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td style="background-image: url('{% static 'ball_bg.jpg' %}');background-position: center;color: rgb(240, 211, 114);border-style: solid;border-width: 0px;padding: 50px 0px 50px 0px;text-align: center;font-size:40px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+					<form action="{% url 'statoptions' %}">
+						<input type="submit" style="-webkit-text-stroke: 1px white;font-size: 15px;background-color: #012b41;color: rgb(255, 255, 255);border-radius: 20px;border-style: none;padding: 10px 10px 10px 10px;" value="ESTATÍSTICAS DE JOGADORES">
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td><br></td>
+			</tr>
+			<tr>
+				<td style="background-color: white;color: #313131;padding-left: 10px;padding-top: 5px;padding-bottom: 5px;border: #313131;border-style: solid;border-width: thin;">
+					<a style="color: #006699;"><b>ÚLTIMAS NOTÍCIAS</b></a>
+					<hr>
+					<li>{{noticia1}}</li>
+					<li>{{noticia2}}</li>
+					<li>{{noticia3}}</li>
+					<div style="text-align: right;padding-right: 5px;color: gray;font-size: 12px;">Fonte: O Jogo</div>
+				</td>
+			</tr>
+			<tr>
+				<td>{{news}}</td>
+			</tr>
+		</table>
+
+		{% else %}
+		<div class="start-blog">
+		{% if request.path == '/statistics' or request.path == '/yfpstats' %}
+
+			{% autoescape off %}
+
+			{{header}}
+
+			{{search}}
+
+			{{data}}
+
+			{% if header_left == '' %}
+
+			<table style="width:100%; border: 1px solid #302f2f;  border-collapse: collapse;">
+				<tr>
+					<td style="background-color:#302f2f;height: 50px;padding-left: 10px;color: #ececec; border: 1px solid #302f2f;  border-collapse: collapse;" colspan="2"><b>&#9733; TOP 3 jogadores externos: Mais procurados</b></td>
+					<td rowspan="4" style="width: 20px;border-top-style: solid;border-bottom-style: solid;border-top-color: white;border-bottom-color: white;"></td>
+					<td style="background-color:#ececec;height: 50px;padding-left: 10px; border: 1px solid #302f2f;  border-collapse: collapse;" colspan="2"><b>&#9733; TOP 3 jogadores internos: Melhores marcadores</b></td>
+				</tr>
+				<tr>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>1.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/statistics?search=gonçalo+batalha" style="text-decoration: none;color:black;">Gonçalo Batalha</a></td>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>1.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/yfpstats?search=gonçalo+ramos" style="text-decoration: none;color:black;">Gonçalo Ramos</a></td>		
+				</tr>
+				<tr>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>2.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/statistics?search=tiago+augusto" style="text-decoration: none;color:black;">Tiago Augusto</a></td>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>2.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/yfpstats?search=tomás+ildefonso" style="text-decoration: none;color:black;">Tomás Ildefonso</a></td>		
+				</tr>
+				<tr>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>3.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/statistics?search=david+costa" style="text-decoration: none;color:black;">David Costa</a></td>
+					<td style="background-color: #006699;color: white;width: 20px;border: 1px solid #302f2f;border-collapse: collapse;text-align: center;"><b>3.</b></td>
+					<td style="border: 1px solid #302f2f;border-collapse: collapse;padding-left: 10px"><a href="/yfpstats?search=gonçalo+farlens" style="text-decoration: none;color:black;">Gonçalo Farlens</a></td>		
+				</tr>
+			</table>				
+
+			{% endif %}
+
+			{% if header_left != '' %}
+			 
+			
+			<table style="width:100%">
+				<tr>
+					<td style="padding: initial;text-align: left;font-size: 12px;">{{header_left}}</td>
+				</tr>
+				<tr>
+					<td style="font-size: 12px;vertical-align: initial;text-align: left;padding-top: 10px;">{{data_left}}</td>
+				</tr>
+				<tr>
+					<td style="text-align: left">{{titulo_jogos}}</td>
+				</tr>
+				<tr>
+					<td style="text-align: left">{{graphic_games}}</td>
+				</tr>
+				<tr>
+					<td style="font-size: 12px; text-align: left;">{{data_games}}</td>
+				</tr>
+				<tr>
+					<td style="text-align: left">{{titulo_info}}</td>
+				</tr>
+				<tr>
+					<td style="text-align: center">{{outra_info}}</td>
+				</tr>
+			</table>
+
+			{% endif %}
+
+			{% endautoescape %}
+
+		{% elif request.path == '/options' %}
+			
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{data}}
+
+			{% endautoescape %}	
+		
+		{% elif request.path == '/statoptions' %}
+			
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{data}}
+
+			{% endautoescape %}		
+
+		{% elif request.path == '/yfpplayers' %}
+			
+			{% autoescape off %}
+		
+			{{header}}
+			
+			{{search}}
+
+			{{data}}
+
+			{{insert_player}}
+
+			{% endautoescape %}				
+
+		{% elif request.path == '/players' %}
+
+			{% autoescape off %}
+
+			<b>{{header}}</b>
+
+			{{search}}
+
+			{{player_header}}
+
+			<table style="width:100%">
+				<tr>
+					<td>{{player_image}}</td>
+				</tr>
+				<tr>
+					<td>{{player_information}}</td>
+				</tr>
+			</table>
+
+			{{data_header}}
+
+			{{data}}
+
+			{{news_header}}
+
+			{{news}}
+
+			{% if specialist_header != '' %}
+
+				{{specialist_header}}
+
+				<table style="background-color: white; width:100%;">
+					<tr>
+						<th style="width: 70px;background-color: #add8e6;text-align: center;padding: 10px 10px 10px 10px;"><img src="{% static 'user_no_photo_300x300.png' %}" style="width:70px;height:70px;" rowspan="2">{{specialist_name}}</th>
+						<td style="padding-left: 10px;vertical-align: text-top;">{{specialist}}</td>
+				  	</tr>
+				</table>
+
+			{% endif %}
+
+			{% endautoescape %}
+
+		{% elif request.path == '/matches' %}
+
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{search}}
+
+			{{subsearch}}
+
+			{{data}}
+
+			{% endautoescape %}
+
+		{% elif request.path == '/contacts' %}
+			
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{data}}
+
+			{{form}}
+
+			{% endautoescape %}	
+
+		{% elif request.path == '/insert_player' %}
+			
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{sub_header}}
+
+			{{form}}
+
+			{{data}}
+
+			{% endautoescape %}
+		
+		{% else %}
+
+			{% autoescape off %}
+		
+			{{header}}	
+
+			{{search}}
+
+			{{subsearch}}
+
+			{{data}}
+
+			{% endautoescape %}
+		
+		{% endif %}
+		</div>
+		{% endif %}
+		<div style="text-align: center; padding:10px;font-size: 12px; color: #8f8f8f;"><a href="{% url 'homepage' %}" style="text-decoration: none;color: #006699">home</a> | <a href="{% url 'statoptions' %}" style="text-decoration: none;color: #006699">estatísticas</a> | <a href="{% url 'classoptions' %}" style="text-decoration: none;color: #006699">classificação</a> | <a href="{% url 'matches' %}" style="text-decoration: none;color: #006699">jornadas</a> | <a href="{% url 'options' %}" style="text-decoration: none;color: #006699">jogadores</a> | <a href="{% url 'contacts' %}" style="text-decoration: none;color: #006699">contactos</a> <!--| <a href="{% url 'archive' %}" style="text-decoration: none;color: #006699">arquivo</a> --> </div>
+		<div style="text-align: center;font-size: 12px;">&copy; 2020 | Youth Football Platform | André Rouiller</div>
+	</body>
+</html>
