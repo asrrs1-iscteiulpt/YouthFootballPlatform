@@ -250,7 +250,6 @@ def yfpstats(request):
             data = f'<b><a style="color: #006699">{count}</a> resultado(s) correspondente(s) ao jogador <a style="color: #006699">{search_query}</a>.</b><br><br>'
         except:
             data = f'<b><a style="color: #006699">{count}</a> resultado(s) correspondente(s) ao jogador <a style="color: #006699">{search_query}</a>.</b><br><br>'
-            #data = '<a style="color: red">Erro na conexão à base de dados.</a>'
             header_left = ''
             print('Erro')
 
@@ -271,7 +270,6 @@ def statistics(request):
     legenda_jogos = ['V', 'E', 'D']
     resultado_jogos = [0,0,0]
 
-    #path = "/Applications/chromedriver"
     data = ''
     header_left = ''
     data_left = ''
@@ -291,13 +289,9 @@ def statistics(request):
     erro = False
 
     if search_query is not None: 
-        #driver_dados = webdriver.Chrome(path)
-        #driver_dados.set_window_position(10000000,100000000)
         start_time_dados_iniciais = time()
         driver.get(f"https://www.zerozero.pt/search_player.php?op=all&search_string={search_query}&fem=0&ida=1&mod=1&ord=i&peq=1&sta=0&op=all")
-        # Dados iniciais
         try: 
-            #table = driver_dados.find_element_by_class_name("zztable")
             table = driver.find_element_by_class_name("zztable")
             table_code = table.get_attribute('innerHTML')
             try:
@@ -328,7 +322,7 @@ def statistics(request):
             player_information = '<i>Nenhum jogador corresponde à pesquisa "%s".</i>' %(search_query)
             data = '<i>Nenhum jogador corresponde à pesquisa "%s".</i><br>' %(search_query)
             erro = True
-            #driver_dados.close()
+
         end_time_dados_iniciais = time()
         print('Tempo para carregar os dados iniciais do jogador: %s segundos' %(round(end_time_dados_iniciais-start_time_dados_iniciais, 3))) 
         if erro == False:
@@ -336,13 +330,11 @@ def statistics(request):
                 player_number = re.search('<div><a href="/player.php(.*)&amp;epoca_id=0&amp;search=1" style="text-decoration:none;">', table_code).group(1)
             except:
                 player_number = 0
-            #driver_dados.close()
+
             # Outros dados
             try:
                 data = ''
                 
-                #driver = webdriver.Chrome(path)
-                #driver.set_window_position(10000000,100000000)
 
                 start_time_estatisticas = time()
                 driver.get(f"https://www.zerozero.pt/player_results.php{player_number}")
@@ -411,9 +403,7 @@ def statistics(request):
                     golos = 0   
                     resultado_jogos = [0,0,0]           
                     print('Erro na procura dos elementos')
-                #driver.close()
             except:
-                #driver.close()
                 player_information = '<i>Nenhum jogador corresponde à pesquisa "%s".</i>' %(search_query)
                 search_query = ''
                 header_left = ''
@@ -422,7 +412,6 @@ def statistics(request):
                 print('Erro provável: excesso de acessos ao zerozero.')
             
             end_time_estatisticas = time()
-            # Imprimir aqui
             print('Tempo para carregar dados estatísticos do jogador: %s segundos' %(round(end_time_estatisticas-start_time_estatisticas, 3))) 
 
             start_time_graph = time()
@@ -593,12 +582,7 @@ def classification(request):
     last_url = str(request.META.get('HTTP_REFERER'))
   
     req = requests.get('https://resultados.fpf.pt/Competition/GetCompetitionsByAssociation?associationId=224&seasonId=99')
-    # for x in ASSOCIACAO_PT:
-    #     if x == str_af:
-    #         req = requests.get(ASSOCIACAO_PT[x])  
-    #     elif str_3 is not None:
-    #         req = requests.get(ASSOCIACAO_PT[last_url.split("&", 1)[0][40:]]) # Se o link for 127.0.0.0 tem de ser "40", se for o outro "44"
-
+	
     if str_af != 'None' and str_af != 'comp_fpf':
         req = requests.get(ASSOCIACAO_PT[str_1])  
     elif str_3 is not None:
@@ -991,15 +975,7 @@ def matches(request):
 
     last_url = str(request.META.get('HTTP_REFERER'))
     req = requests.get('https://resultados.fpf.pt/Competition/GetCompetitionsByAssociation?associationId=224&seasonId=99')
-    # for x in ASSOCIACAO_PT:
-    #     if x == str_af:
-    #         teste_url = ASSOCIACAO_PT[x]
-    #         req = requests.get(teste_url) 
-    #     elif str_3 is not None:
-    #         teste_url = ASSOCIACAO_PT[last_url.split("&", 1)[0][33:]]
-    #         req = requests.get(teste_url)
 
-    #O processo comentado acima estava a demorar muito tempo
     if str_af != 'None' and str_af != 'comp_fpf':
         teste_url = ASSOCIACAO_PT[str_1]
         req = requests.get(teste_url)          
@@ -1089,7 +1065,6 @@ def matches(request):
                     if str_3 in y and 'Futsal' not in y and 'FUTSAL' not in y:
                         str_url = y.split('" ', 1)[0][9:]
 
-                        # Adicionei esta linha \/ porque não fazia scraping certo na AF Madeira por exemplo
                         str_url = str_url.replace('amp;', '')
 
             url_comp = 'https://resultados.fpf.pt%s' %(str_url) 
@@ -1100,11 +1075,9 @@ def matches(request):
         if str_4 == 'divisao2':
             header = '<b><a style="color: #006699">Jornada %s:</a></b> Competições FPF > Júniores > 2ª Divisão<hr><br>' %(str(str_5))
             url_comp = 'https://resultados.fpf.pt/Competition/Details?competitionId=17016&seasonId=98'
-        # if str_1 == 'comp_fpf' and str_2 == 'juvenis':
         if str_4 == 'juvenis':
             header = '<b><a style="color: #006699">Jornada %s:</a></b> Competições FPF > Juvenis<hr><br>' %(str(str_5))
             url_comp = 'https://resultados.fpf.pt/Competition/Details?competitionId=17017&seasonId=98'
-        # if str_1 == 'comp_fpf' and str_2 == 'iniciados':
         if str_4 == 'iniciados':
             header = '<b><a style="color: #006699">Jornada %s:</a></b> Competições FPF > Iniciados<hr><br>' %(str(str_5))
             url_comp = 'https://resultados.fpf.pt/Competition/Details?competitionId=17022&seasonId=98'
@@ -1159,7 +1132,6 @@ def matches(request):
                         data = data + jornadas_tabela.to_html(index=False) + '<br><br>' 
                 else:
                     pass
-                    # print('Acabou')
             if '</table>' not in data:
                 data = data + 'Não existe a jornada %s nesta competição.<br><br>' %(str(str_5))
             data = data + '<input type="button" value="Voltar" onclick="history.back()">'             
@@ -1228,10 +1200,7 @@ def players(request):
     specialist_name = ''
     data = ''
 
-    #path = "/Applications/chromedriver"
     if search_query != None:
-        #driver = webdriver.Chrome(path)
-        #driver.set_window_position(10000000,100000000)
         start_time_extracao = time()
         
         driver.get(f"https://www.zerozero.pt/search_player.php?op=all&search_string={search_query}&fem=0&ida=1&mod=1&ord=i&peq=1&sta=0&op=all")
@@ -1996,15 +1965,7 @@ def archive(request):
 
     last_url = str(request.META.get('HTTP_REFERER'))
     req = requests.get('https://resultados.fpf.pt/Competition/GetCompetitionsByAssociation?associationId=224&seasonId=99')
-    # for x in ASSOCIACAO_EPOCA_PT:
-    #     tempo_int = time()
-    #     print('Tempo intermedio: %s segundos' %(round(tempo_int-start_time, 3)))
-    #     if x == str_af:
-    #         req = requests.get(ASSOCIACAO_EPOCA_PT[x]+EPOCA_PT[str_epoca]) 
-    #     elif str_3 is not None:
-    #         req = requests.get(ASSOCIACAO_EPOCA_PT[last_url.split("&campeonato", 1)[0][45:]]+EPOCA_PT[last_url.split("&", 1)[0][36:]])
 
-    # Este if e elif é um processo melhorado do código acima comentado
     if str_af != 'None' and str_af != 'comp_fpf':
         req = requests.get(ASSOCIACAO_EPOCA_PT[str_1]+EPOCA_PT[str_epoca])
     elif str_3 is not None:
